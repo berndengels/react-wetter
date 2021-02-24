@@ -1,5 +1,3 @@
-//import logo from './logo.svg';
-//import './App.css';
 import Wetter from "./components/Wetter";
 
 function App() {
