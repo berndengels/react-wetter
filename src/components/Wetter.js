@@ -25,8 +25,8 @@ class Wetter extends Component {
                 // @todos:
                 // - check response code 200
                 // - set states (setState) for weather, error
-                // - get temparatur
-                // - set container classes for summer if temperatur >= 18 or winter if lower
+                // - get temperature
+                // - set container classes for summer if temperature >= 18 or winter if lower
                 if(200 === res.data.cod) {
                     let wetter = res.data;
                     console.info(res.data);
