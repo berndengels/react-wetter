@@ -10,9 +10,9 @@ class Wetter extends Component {
         weather: null,
         error: null
     }
-    onSumit = (e) => {
+    onSubmit = (e) => {
         e.preventDefault();
-        let city = null;
+        let city = document.getElementById('city').value;
         this.getWeather(city);
     }
     getWeather(city) {
@@ -25,11 +25,24 @@ class Wetter extends Component {
                 // - set states (setState) for weather, error
                 // - get temparatur
                 // - set container classes for summer if temperatur >= 18 or winter if lower
+                if(200 === res.data.cod) {
+                    let wetter = res.data;
+                    console.info(res.data);
+                    this.setState({weather: wetter, error: null})
+                    let temp = wetter.main.temp
+                    if(temp >= 15) {
+                        document.querySelector('.container').className = "container sommer"
+                    } else {
+                        document.querySelector('.container').className = "container winter"
+                    }
+
+                }
             })
             .catch(err => {
                 if(err.response) {
                     // @todo:
                     // - set setState for error (err.response.data)
+                    this.setState({weather: null, error: err.response.data})
                 }
             });
     }
@@ -37,7 +50,7 @@ class Wetter extends Component {
         return (
             <div className="container">
                 <h3>Mein Wetter</h3>
-                <form onSubmit={this.onSumit}>
+                <form onSubmit={this.onSubmit}>
                     <input id="city" className="city" />
                     <button>Suche</button>
                 </form>
@@ -52,15 +65,15 @@ function WeatherData(props) {
     if (err !== null) {
         return (
             <div>
-                <h3>{err}</h3>
+                <h3>{err.message}</h3>
             </div>
         )
     }
     else if(w !== null) {
-        let temp        = null,
-            description = null,
-            sunrise     = null,
-            sunset      = null;
+        let temp        = Math.round(w.main.temp),
+            description = w.weather[0].description,
+            sunrise     = (new Date((w.sys.sunrise)*1000)).toLocaleTimeString(),
+            sunset      = (new Date((w.sys.sunset)*1000)).toLocaleTimeString();
 
         return (<div className="result">
             <div className="temp">
