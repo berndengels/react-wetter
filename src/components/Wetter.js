@@ -2,7 +2,7 @@ import '../assets/css/wetter.css';
 import {React, Component} from 'react';
 import axios from 'axios';
 
-const API_URL = 'http://api.openweathermap.org/data/2.5/weather';
+const API_URL = process.env.REACT_APP_WEATHER_API_URL;
 const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
 class Wetter extends Component {
