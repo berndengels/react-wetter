@@ -50,12 +50,17 @@ input.city, button {
 	font-weight: 900;
 	text-shadow: 5px 5px 5px #666;
 }
-.description {
+.description p {
 	font-size: 30px;
 	font-weight: 900;
 	margin: 20px;
 	color: white;
+	vertical-align: middle;
 	text-shadow: 2px 2px 2px #006;
+}
+.description p img {
+	margin-right: 0.2rem;
+	vertical-align: middle;
 }
 .sun span {
 	font-size: 20px;

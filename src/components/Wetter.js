@@ -61,6 +61,10 @@ class Wetter extends Component {
     }
 }
 
+function zeroFill(val) {
+    return (val < 10 ? '0' : '') + val;
+}
+
 function WeatherData(props) {
     const w = props.weather, err = props.error;
 
@@ -74,18 +78,21 @@ function WeatherData(props) {
     else if(null !== w) {
         let temp        = Math.round(w.main.temp),
             description = w.weather[0].description,
-            sunrise     = (new Date(w.sys.sunrise * 1000)).toLocaleTimeString(),
-            sunset      = (new Date(w.sys.sunset * 1000)).toLocaleTimeString();
+            iconURL     = "http://openweathermap.org/img/w/" + w.weather[0].icon + ".png",
+            dateSunrise = new Date(w.sys.sunrise * 1000),
+            dateSunset  = new Date(w.sys.sunset * 1000),
+            sunrise     = dateSunrise.getHours() + ":" + zeroFill(dateSunrise.getMinutes()),
+            sunset      = dateSunset.getHours() + ":" + zeroFill(dateSunset.getMinutes());
 
         return (<div className="result">
             <div className="temp">
                 <span>{temp} °C</span>
             </div>
             <div className="description">
-                <span>{description}</span>
+                <p><img src={iconURL} height="80" alt={description} title={description} /> {description}</p>
             </div>
             <div className="sun">
-                <div><span>Sonnenaufgang  {sunrise} Uhr</span></div>
+                <div><span>Sonnenaufgang {sunrise} Uhr</span></div>
                 <div><span>Sonnenuntergang {sunset} Uhr</span></div>
             </div>
         </div>);

@@ -1,0 +1,3 @@
+openweathermap
+URL: http://api.openweathermap.org/data/2.5/weather?q=Berlin,de&lang=de&units=metric&APPID={API_KEY}
+Icon URL: "http://openweathermap.org/img/w/" + iconcode + ".png"
