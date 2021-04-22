@@ -1,0 +1,46 @@
+{
+    "coord": {
+        "lon": 13.41,
+        "lat": 52.52
+    },
+    "weather": [
+        {
+            "id": 500,
+            "main": "Rain",
+            "description": "Leichter Regen",
+            "icon": "10d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 15.3,
+        "feels_like": 10.16,
+        "temp_min": 14,
+        "temp_max": 16.67,
+        "pressure": 1016,
+        "humidity": 62
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 6.7,
+        "deg": 210
+    },
+    "rain": {
+        "1h": 0.19
+    },
+    "clouds": {
+        "all": 20
+    },
+    "dt": 1602155872,
+    "sys": {
+        "type": 1,
+        "id": 1275,
+        "country": "DE",
+        "sunrise": 1602134392,
+        "sunset": 1602174448
+    },
+    "timezone": 7200,
+    "id": 2950159,
+    "name": "Berlin",
+    "cod": 200
+}
