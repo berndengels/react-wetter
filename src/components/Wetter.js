@@ -2,8 +2,10 @@ import '../assets/css/wetter.css';
 import {React, Component} from 'react';
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_WEATHER_API_URL;
-const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
+const
+    API_URL = process.env.REACT_APP_WEATHER_API_URL,
+    API_KEY = process.env.REACT_APP_WEATHER_API_KEY,
+    SUMMER_TEMPERATURE = process.env.REACT_APP_SUMMER_TEMPERATURE
 
 class Wetter extends Component {
     state = {
@@ -32,7 +34,7 @@ class Wetter extends Component {
                     console.info(res.data);
                     this.setState({weather: wetter, error: null})
                     let temp = wetter.main.temp
-                    if(temp >= 18) {
+                    if(temp >= SUMMER_TEMPERATURE) {
                         document.querySelector('.container').className = "container sommer"
                     } else {
                         document.querySelector('.container').className = "container winter"
