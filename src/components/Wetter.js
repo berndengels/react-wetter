@@ -30,10 +30,11 @@ class Wetter extends Component {
                 // - get temparatur
                 // - set container classes for summer if temperatur >= 18 or winter if lower
                 if(200 === res.data.cod) {
-                    let wetter = res.data;
-                    console.info(res.data);
+                    let wetter = res.data,
+                        temp = wetter.main.temp;
+
                     this.setState({weather: wetter, error: null})
-                    let temp = wetter.main.temp
+
                     if(temp >= SUMMER_TEMPERATURE) {
                         document.querySelector('.container').className = "container sommer"
                     } else {
@@ -43,8 +44,6 @@ class Wetter extends Component {
             })
             .catch(err => {
                 if(err.response && undefined !== err.response.data.message) {
-                    // @todo:
-                    // - set setState for error (err.response.data)
                     this.setState({weather: null, error: err.response.data.message})
                 }
             });
